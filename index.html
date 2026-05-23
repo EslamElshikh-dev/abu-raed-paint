@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أبو رائد لخدمات الدهانات | Abu Raed Painting Services</title>
+    
     <!-- SEO & Social Media Meta Tags -->
     <meta name="description" content="أبو رائد لخدمات الدهانات في الرياض: دهانات داخلية وخارجية، ورق جدران، معالجة رطوبة، وجبس بورد بجودة واحترافية عالية.">
     <meta property="og:title" content="أبو رائد لخدمات الدهانات">
     <meta property="og:description" content="حلول طلاء متكاملة تشمل دهان الجدران، الأبواب، والأسقف بأعلى جودة في الرياض.">
+    
     <!-- Fonts & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -21,7 +25,7 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#b89146', // ذهبي احترافي للدهانات
+                        primary: '#b89146', 
                         secondary: '#1e293b',
                     },
                     fontFamily: {
@@ -32,14 +36,6 @@
         }
     </script>
     <style>
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .dark .glass-card {
-            background: rgba(15, 23, 42, 0.8);
-        }
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 30px -10px rgba(184, 145, 70, 0.3);
@@ -49,34 +45,39 @@
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+            40% {transform: translateY(-8px);}
+            60% {transform: translateY(-4px);}
         }
+        #floatingButtons {
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1), right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        /* لتجنب تغطية المحتوى السفلي بشريط الموبايل */
+        .pb-safe { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-slate-900 text-slate-800 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-gray-50 dark:bg-slate-900 text-slate-800 dark:text-gray-100 transition-colors duration-300 relative">
 
-    <!-- Header -->
-    <header class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
+    <!-- Header (Desktop) -->
+    <header class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-slate-800">
         <div class="container mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-4">
-                <button id="menuBtn" class="text-2xl lg:hidden"><i class="fas fa-bars"></i></button>
-                <h1 class="text-lg md:text-xl font-bold text-primary" data-i18n="siteName">أبو رائد لخدمات الدهانات</h1>
+            <div class="flex items-center">
+                <h1 class="text-lg md:text-xl font-extrabold text-primary" data-i18n="siteName">أبو رائد لخدمات الدهانات</h1>
             </div>
             
-            <nav class="hidden lg:flex gap-6 font-medium">
-                <a href="#home" data-i18n="navHome">الرئيسية</a>
-                <a href="#whyUs" data-i18n="navWhy">لماذا نحن؟</a>
-                <a href="#services" data-i18n="navServices">الخدمات</a>
-                <a href="#contact" data-i18n="navContact">تواصل معنا</a>
+            <!-- Navigation Links (Desktop & Tablet only) -->
+            <nav class="hidden md:flex gap-8 font-semibold text-sm">
+                <a href="#home" class="hover:text-primary transition-colors" data-i18n="navHome">الرئيسية</a>
+                <a href="#whyUs" class="hover:text-primary transition-colors" data-i18n="navWhy">لماذا نحن؟</a>
+                <a href="#services" class="hover:text-primary transition-colors" data-i18n="navServices">الخدمات</a>
+                <a href="#contact" class="hover:text-primary transition-colors" data-i18n="navContact">تواصل معنا</a>
             </nav>
 
             <div class="flex items-center gap-3">
-                <button id="themeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-primary transition-all">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block"></i>
+                <button id="themeToggle" class="w-10 h-10 flex items-center justify-center rounded-xl bg-gray-100 dark:bg-slate-800 text-primary transition-all hover:bg-gray-200 dark:hover:bg-slate-700">
+                    <i class="fas fa-moon text-lg dark:hidden"></i>
+                    <i class="fas fa-sun text-lg hidden dark:block"></i>
                 </button>
-                <button id="langToggle" class="px-3 py-1 rounded-lg border border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all text-sm">EN</button>
+                <button id="langToggle" class="w-10 h-10 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all text-sm flex items-center justify-center">EN</button>
             </div>
         </div>
     </header>
@@ -84,38 +85,49 @@
     <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 px-4 text-center bg-gradient-to-b from-primary/10 to-transparent">
         <div class="container mx-auto" data-aos="fade-up">
-            <h2 class="text-3xl md:text-5xl font-extrabold mb-6 leading-tight" data-i18n="heroTitle">
+            <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight text-slate-800 dark:text-white" data-i18n="heroTitle">
                 أبو رائد لخدمات الدهانات في الرياض
             </h2>
-            <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed opacity-90" data-i18n="siteDesc">
+            <p class="max-w-2xl mx-auto text-sm md:text-base leading-relaxed opacity-90 font-medium" data-i18n="siteDesc">
                 حلول طلاء متكاملة تشمل دهان الجدران والحوائط والأبواب والأسقف مع تخصص دقيق في تنفيذ دهانات غرف النوم وغرف الأطفال نوفر خدمات احترافية في إعادة تلوين الدهانات القائمة وترميم التالف منها ومعالجتها بالإضافة إلى تركيب ورق الجدران بمختلف أنواعه لضمان تشطيب عصري وجودة تنفيذ عالية.
             </p>
         </div>
     </section>
 
-    <!-- Why Us Section -->
+    <!-- Why Us Section (Centered Content) -->
     <section id="whyUs" class="py-16 container mx-auto px-4">
-        <h3 class="text-2xl font-bold text-center mb-12" data-i18n="whyChooseUs">لماذا تختار أبو رائد لخدمات الدهانات ؟</h3>
+        <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 relative inline-block left-1/2 -translate-x-1/2" data-i18n="whyChooseUs">
+            لماذا تختار أبو رائد لخدمات الدهانات ؟
+            <span class="block w-1/2 h-1 bg-primary mx-auto mt-3 rounded-full"></span>
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary" data-aos="zoom-in" data-aos-delay="100">
-                <i class="fas fa-award text-3xl text-primary mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm" data-i18n="feat1Title">خبرة واسعة</h4>
-                <p class="text-xs opacity-80" data-i18n="feat1Desc">نمتلك خبرة تمتد لسنوات في تنفيذ كافة أنواع الدهانات والتشطيبات الفاخرة بأدق المعايير العالمية في الرياض.</p>
+            <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="100">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <i class="fas fa-award text-3xl text-primary"></i>
+                </div>
+                <h4 class="font-bold mb-3 text-base" data-i18n="feat1Title">خبرة واسعة</h4>
+                <p class="text-xs opacity-80 leading-relaxed font-medium" data-i18n="feat1Desc">نمتلك خبرة تمتد لسنوات في تنفيذ كافة أنواع الدهانات والتشطيبات الفاخرة بأدق المعايير العالمية في الرياض.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary" data-aos="zoom-in" data-aos-delay="200">
-                <i class="fas fa-tools text-3xl text-primary mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm" data-i18n="feat2Title">جودة الخامات</h4>
-                <p class="text-xs opacity-80" data-i18n="feat2Desc">نستخدم أجود أنواع الدهانات المعتمدة عالمياً لضمان ثبات الألوان ومقاومتها للظروف البيئية المختلفة.</p>
+            <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="200">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <i class="fas fa-tools text-3xl text-primary"></i>
+                </div>
+                <h4 class="font-bold mb-3 text-base" data-i18n="feat2Title">جودة الخامات</h4>
+                <p class="text-xs opacity-80 leading-relaxed font-medium" data-i18n="feat2Desc">نستخدم أجود أنواع الدهانات المعتمدة عالمياً لضمان ثبات الألوان ومقاومتها للظروف البيئية المختلفة.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary" data-aos="zoom-in" data-aos-delay="300">
-                <i class="fas fa-clock text-3xl text-primary mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm" data-i18n="feat3Title">التزام بالمواعيد</h4>
-                <p class="text-xs opacity-80" data-i18n="feat3Desc">ندرك قيمة الوقت، لذلك نلتزم بتسليم كافة مشاريعنا في المواعيد المحددة مع ضمان نظافة المكان.</p>
+            <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="300">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <i class="fas fa-clock text-3xl text-primary"></i>
+                </div>
+                <h4 class="font-bold mb-3 text-base" data-i18n="feat3Title">التزام بالمواعيد</h4>
+                <p class="text-xs opacity-80 leading-relaxed font-medium" data-i18n="feat3Desc">ندرك قيمة الوقت، لذلك نلتزم بتسليم كافة مشاريعنا في المواعيد المحددة مع ضمان نظافة المكان.</p>
             </div>
-            <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary" data-aos="zoom-in" data-aos-delay="400">
-                <i class="fas fa-hand-holding-dollar text-3xl text-primary mb-4"></i>
-                <h4 class="font-bold mb-2 text-sm" data-i18n="feat4Title">أسعار تنافسية</h4>
-                <p class="text-xs opacity-80" data-i18n="feat4Desc">نقدم أفضل خدمات الدهانات والديكور بأسعار مدروسة تتناسب مع ميزانيتكم دون المساومة على الجودة.</p>
+            <div class="p-8 rounded-3xl bg-white dark:bg-slate-800 shadow-xl border-b-4 border-primary flex flex-col items-center text-center hover:-translate-y-2 transition-transform duration-300" data-aos="zoom-in" data-aos-delay="400">
+                <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                    <i class="fas fa-hand-holding-dollar text-3xl text-primary"></i>
+                </div>
+                <h4 class="font-bold mb-3 text-base" data-i18n="feat4Title">أسعار تنافسية</h4>
+                <p class="text-xs opacity-80 leading-relaxed font-medium" data-i18n="feat4Desc">نقدم أفضل خدمات الدهانات والديكور بأسعار مدروسة تتناسب مع ميزانيتكم دون المساومة على الجودة.</p>
             </div>
         </div>
     </section>
@@ -123,7 +135,10 @@
     <!-- Services Section -->
     <section id="services" class="py-16 bg-gray-100 dark:bg-slate-800/50">
         <div class="container mx-auto px-4">
-            <h3 class="text-2xl font-bold text-center mb-12" data-i18n="ourServices">خدماتنا الاحترافية</h3>
+            <h3 class="text-2xl md:text-3xl font-bold text-center mb-12 relative inline-block left-1/2 -translate-x-1/2" data-i18n="ourServices">
+                خدماتنا الاحترافية
+                <span class="block w-1/2 h-1 bg-primary mx-auto mt-3 rounded-full"></span>
+            </h3>
             <div id="servicesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- سيتم ملؤها عبر JavaScript -->
             </div>
@@ -132,24 +147,24 @@
 
     <!-- Map Section -->
     <section class="py-16 container mx-auto px-4">
-        <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-primary/20" data-aos="fade-up">
+        <div class="rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 relative z-10" data-aos="fade-up">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d963393.0733634157!2d46.85247065000001!3d24.725191849999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6cae68b9064e55b%3A0xc1274b80fc2c990b!2z2KPYqNmIINix2KfYptivINmE2K7Yr9mF2KfYqiDYp9mE2K_Zh9in2YbYp9iq!5e1!3m2!1sar!2ssa!4v1779533573043!5m2!1sar!2ssa" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
 
     <!-- Contact Form -->
     <section id="contact" class="py-16 container mx-auto px-4 max-w-2xl">
-        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl" data-aos="flip-left">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border border-gray-100 dark:border-slate-700 relative z-10" data-aos="flip-up">
             <h3 class="text-2xl font-bold text-center mb-8" data-i18n="contactUs">طلب خدمة جديد</h3>
-            <form id="contactForm" class="space-y-4">
-                <input type="text" id="name" placeholder="الإسم الكريم" class="w-full p-3 rounded-xl border dark:bg-slate-700 dark:border-slate-600 focus:ring-2 focus:ring-primary outline-none" required>
-                <input type="tel" id="phone" placeholder="رقم الجوال" class="w-full p-3 rounded-xl border dark:bg-slate-700 dark:border-slate-600 focus:ring-2 focus:ring-primary outline-none" required>
-                <select id="service" class="w-full p-3 rounded-xl border dark:bg-slate-700 dark:border-slate-600 focus:ring-2 focus:ring-primary outline-none">
+            <form id="contactForm" class="space-y-5">
+                <input type="text" id="name" placeholder="الإسم الكريم" class="w-full p-4 rounded-xl bg-gray-50 dark:bg-slate-900 border border-transparent focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium" required>
+                <input type="tel" id="phone" placeholder="رقم الجوال" class="w-full p-4 rounded-xl bg-gray-50 dark:bg-slate-900 border border-transparent focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium" required>
+                <select id="service" class="w-full p-4 rounded-xl bg-gray-50 dark:bg-slate-900 border border-transparent focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium cursor-pointer">
                     <!-- الخيارات تضاف بـ JS -->
                 </select>
-                <textarea id="details" placeholder="تفاصيل إضافية عن طلبك..." rows="4" class="w-full p-3 rounded-xl border dark:bg-slate-700 dark:border-slate-600 focus:ring-2 focus:ring-primary outline-none"></textarea>
-                <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-opacity-90 transition-all shadow-lg flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp"></i>
+                <textarea id="details" placeholder="تفاصيل إضافية عن طلبك..." rows="4" class="w-full p-4 rounded-xl bg-gray-50 dark:bg-slate-900 border border-transparent focus:border-primary dark:focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium"></textarea>
+                <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl hover:bg-opacity-90 transition-all shadow-lg flex items-center justify-center gap-2 hover:-translate-y-1">
+                    <i class="fab fa-whatsapp text-xl"></i>
                     <span data-i18n="sendOrder">إرسال الطلب عبر واتساب</span>
                 </button>
             </form>
@@ -157,26 +172,47 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-8 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 text-center px-4">
-        <p class="text-[10px] md:text-xs mb-4 opacity-80" data-i18n="copyright">
+    <!-- تمت إضافة مسافة سفلية (pb-24) للموبايل لكي لا يُغطي شريط التنقل السفلي الفوتر -->
+    <footer class="pt-8 pb-24 md:pb-8 bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800 text-center px-4 relative z-10">
+        <p class="text-[10px] md:text-xs mb-4 opacity-80 font-medium" data-i18n="copyright">
             جميع الحقوق محفوظة لدى أبو رائد لخدمات الدهانات 2026 ©
         </p>
-        <a href="https://wa.me/966547194788" class="inline-block px-4 py-1.5 border border-primary/30 rounded-full text-[10px] md:text-xs font-semibold hover:bg-primary hover:text-white transition-all">
+        <a href="https://wa.me/966547194788" class="inline-block px-5 py-2 border border-primary/30 rounded-full text-[10px] md:text-xs font-semibold hover:bg-primary hover:text-white transition-all shadow-sm">
             تصميم وتطوير المهندس : إسلام الشيخ
         </a>
     </footer>
 
-    <!-- Floating Buttons -->
-    <div id="floatingButtons" class="fixed bottom-6 right-6 flex flex-col gap-4 z-[99]">
-        <a href="https://wa.me/966583463510" class="w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl floating-btn"><i class="fab fa-whatsapp"></i></a>
-        <a href="tel:0583463510" class="w-14 h-14 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl shadow-xl"><i class="fas fa-phone"></i></a>
+    <!-- Mobile Bottom Navigation Bar -->
+    <nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t border-gray-200 dark:border-slate-800 z-[100] h-16 flex justify-around items-center pb-safe shadow-[0_-5px_15px_rgba(0,0,0,0.05)] transition-colors duration-300">
+        <a href="#home" class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-16">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-[10px] font-bold" data-i18n="navHome">الرئيسية</span>
+        </a>
+        <a href="#whyUs" class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-16">
+            <i class="fas fa-star text-lg"></i>
+            <span class="text-[10px] font-bold" data-i18n="navWhy">المميزات</span>
+        </a>
+        <a href="#services" class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-16">
+            <i class="fas fa-paint-roller text-lg"></i>
+            <span class="text-[10px] font-bold" data-i18n="navServices">الخدمات</span>
+        </a>
+        <a href="#contact" class="flex flex-col items-center gap-1 text-gray-400 hover:text-primary dark:hover:text-primary transition-colors w-16">
+            <i class="fas fa-envelope text-lg"></i>
+            <span class="text-[10px] font-bold" data-i18n="navContact">تواصل</span>
+        </a>
+    </nav>
+
+    <!-- Floating Buttons (تصغير الحجم بنسبة 30٪ ورفعها في الموبايل) -->
+    <div id="floatingButtons" class="fixed bottom-24 md:bottom-6 flex flex-col gap-3 z-[90]">
+        <a href="https://wa.me/966583463510" class="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center text-xl shadow-[0_0_12px_rgba(34,197,94,0.5)] floating-btn hover:scale-110 transition-transform"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:0583463510" class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-lg shadow-[0_0_12px_rgba(37,99,235,0.5)] hover:scale-110 transition-transform"><i class="fas fa-phone"></i></a>
     </div>
 
     <script>
         const translations = {
             ar: {
                 siteName: "أبو رائد لخدمات الدهانات",
-                navHome: "الرئيسية", navWhy: "لماذا نحن؟", navServices: "الخدمات", navContact: "تواصل معنا",
+                navHome: "الرئيسية", navWhy: "المميزات", navServices: "الخدمات", navContact: "تواصل",
                 heroTitle: "أبو رائد لخدمات الدهانات في الرياض",
                 siteDesc: "أبو رائد لخدمات الدهانات في الرياض حلول طلاء متكاملة تشمل دهان الجدران والحوائط والأبواب والأسقف مع تخصص دقيق في تنفيذ دهانات غرف النوم وغرف الأطفال نوفر خدمات احترافية في إعادة تلوين الدهانات القائمة وترميم التالف منها ومعالجتها بالإضافة إلى تركيب ورق الجدران بمختلف أنواعه لضمان تشطيب عصري وجودة تنفيذ عالية.",
                 whyChooseUs: "لماذا تختار أبو رائد لخدمات الدهانات ؟",
@@ -191,8 +227,8 @@
                 orderBtn: "اطلب هذه الخدمة"
             },
             en: {
-                siteName: "Abu Raed Painting Services",
-                navHome: "Home", navWhy: "Why Us?", navServices: "Services", navContact: "Contact",
+                siteName: "Abu Raed Painting",
+                navHome: "Home", navWhy: "Features", navServices: "Services", navContact: "Contact",
                 heroTitle: "Abu Raed Painting Services in Riyadh",
                 siteDesc: "Abu Raed Painting Services in Riyadh provides integrated painting solutions including walls, doors, and ceilings. Specialists in bedrooms and children's room painting. We offer professional re-coloring, restoration of damaged walls, and wallpaper installation to ensure a modern finish and high execution quality.",
                 whyChooseUs: "Why Choose Abu Raed Services?",
@@ -228,45 +264,45 @@
             document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
             document.documentElement.lang = currentLang;
             
-            // Update Texts
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                el.innerText = translations[currentLang][key];
+                if(translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
             });
 
-            // Toggle Button Text
             document.getElementById('langToggle').innerText = currentLang === 'ar' ? 'EN' : 'AR';
 
-            // Re-render Services
             renderServices();
             renderOptions();
             
-            // Adjust floating buttons position
+            // ضبط الأزرار العائمة حسب اللغة
             const floatBtn = document.getElementById('floatingButtons');
-            if(currentLang === 'en') {
-                floatBtn.style.right = 'auto';
+            if(currentLang === 'ar') {
                 floatBtn.style.left = '1.5rem';
+                floatBtn.style.right = 'auto';
             } else {
-                floatBtn.style.left = 'auto';
                 floatBtn.style.right = '1.5rem';
+                floatBtn.style.left = 'auto';
             }
         }
 
         function renderServices() {
             const grid = document.getElementById('servicesGrid');
             grid.innerHTML = servicesData.map(s => `
-                <div class="service-card p-8 rounded-3xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 transition-all duration-300 text-center" data-aos="fade-up">
-                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl">
+                <div class="service-card p-8 rounded-3xl bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 transition-all duration-300 text-center shadow-lg relative overflow-hidden group" data-aos="fade-up">
+                    <div class="absolute inset-0 bg-primary/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                    <div class="w-16 h-16 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-6 text-3xl relative z-10">
                         <i class="fas ${s.icon}"></i>
                     </div>
-                    <h4 class="text-lg font-bold mb-4">${currentLang === 'ar' ? s.ar : s.en}</h4>
-                    <p class="text-xs opacity-70 mb-6 leading-relaxed">
+                    <h4 class="text-lg font-bold mb-4 relative z-10">${currentLang === 'ar' ? s.ar : s.en}</h4>
+                    <p class="text-xs opacity-75 mb-6 leading-relaxed font-medium relative z-10">
                         ${currentLang === 'ar' ? 
-                        `خدمة ${s.ar} احترافية في الرياض. نستخدم أفضل التقنيات لضمان نتيجة مثالية تدوم لسنوات طويلاً مع معايير السيو والارشفة.` : 
-                        `Professional ${s.en} in Riyadh. We use the best techniques to ensure perfect results that last for years.`}
+                        `نقدم خدمة ${s.ar} باحترافية عالية في الرياض. نعتمد أحدث الأساليب وأفضل الخامات لضمان تنفيذ متقن يعيش لسنوات بأعلى جودة وتصميم عصري.` : 
+                        `We provide highly professional ${s.en} services in Riyadh. We rely on the latest methods and best materials to ensure perfect execution.`}
                     </p>
-                    <a href="https://wa.me/966583463510?text=${encodeURIComponent(currentLang === 'ar' ? 'أريد خدمة: ' + s.ar : 'I need service: ' + s.en)}" 
-                       class="inline-block w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all text-xs">
+                    <a href="https://wa.me/966583463510?text=${encodeURIComponent(currentLang === 'ar' ? 'أريد طلب خدمة: ' + s.ar : 'I want to order: ' + s.en)}" 
+                       class="inline-block w-full py-3 rounded-xl border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all text-xs relative z-10">
                         ${translations[currentLang].orderBtn}
                     </a>
                 </div>
@@ -278,7 +314,6 @@
             select.innerHTML = servicesData.map(s => `<option value="${s.ar}">${currentLang === 'ar' ? s.ar : s.en}</option>`).join('');
         }
 
-        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
@@ -289,14 +324,12 @@
             document.documentElement.classList.add('dark');
         }
 
-        // Lang Toggle
         document.getElementById('langToggle').addEventListener('click', () => {
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             localStorage.setItem('lang', currentLang);
             updateLang();
         });
 
-        // Form Submit
         document.getElementById('contactForm').addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -308,9 +341,30 @@
             window.open(`https://wa.me/966583463510?text=${encodeURIComponent(text)}`, '_blank');
         });
 
-        // Initialize
-        AOS.init({ duration: 1000, once: true });
+        // تفعيل حركة السكرول والأنيميشن
+        AOS.init({ duration: 800, once: true });
         updateLang();
+
+        // تلوين الايقونة النشطة في البار السفلي حسب المكان بالصفحة (اختياري لزيادة الاحترافية)
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(a => {
+                a.classList.remove('text-primary');
+                a.classList.add('text-gray-400');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.remove('text-gray-400');
+                    a.classList.add('text-primary');
+                }
+            });
+        });
     </script>
 </body>
 </html>
